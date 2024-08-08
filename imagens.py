@@ -95,7 +95,7 @@ def main(dicio):
     i += 1
 
   if config:
-    content[0]['text'] = " Analyse the images and tell me what the expecifications of the machine in them in them. In these expecifications include only: Name, Model, ID Number, Manufacturer, Power, Rotation, Tension, Protection Degree e Eficienty. " 
+    content[0]['text'] = " Analyse the images and tell me what the expecifications of the machine in them in them. In these expecifications include only: Name, Model, ID Number, Manufacturer, Power, Rotation, Tension, Protection Degree e Eficienty. Write expecifically only these expecifications in the order I told and each one of them in only one line " 
     completion = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -104,7 +104,10 @@ def main(dicio):
         ]
       )
         
-    
+    with open(f"respostas/resposta_{agora}.txt", "w+") as resposta:
+      resposta.write(str(response.choices[0].message.content))
+      
+      
     pass
 
 if __name__ =='__main__':
