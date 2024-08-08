@@ -91,8 +91,21 @@ def main(dicio):
 
     else:
       print(f'Tente novamente, {completion.choices[0].message.content}')
+      
+    i += 1
 
-  i += 1
+  if config:
+    content[0]['text'] = " Analyse the images and tell me what the expecifications of the machine in them in them. In these expecifications include only: Name, Model, ID Number, Manufacturer, Power, Rotation, Tension, Protection Degree e Eficienty. " 
+    completion = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+          {"role": "user", 
+           "content": content}
+        ]
+      )
+        
+    
+    pass
 
 if __name__ =='__main__':
    main()
