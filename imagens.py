@@ -69,4 +69,4 @@ hash_object = hashlib.sha256(random_bytes)
 hash_hex = hash_object.hexdigest()
 
 with open(f"respostas/resposta_{hash_hex}.txt", "w+") as resposta:
-   resposta.write(str(response.choices[0].message))
+   resposta.write(str(response.choices[0].message.content))
